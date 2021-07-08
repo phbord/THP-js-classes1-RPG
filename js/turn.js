@@ -63,7 +63,7 @@ class Turn {
             }
             else {
                 delete this.alivePlayers[attacker.name];
-                return this.choosePlayer();
+                this.choosePlayer();
             }
         }
         else {
