@@ -29,30 +29,32 @@ class Turn {
 
     //ONE BLOW (for one character)
     play() {
-        console.log('this.leftToPlay.length ===> ',this.leftToPlay.length);
-        if (this.turnStatus !== "over") {
-            let attacker = this.choosePlayer();
+        const attacker = this.choosePlayer();
+        if (this.turnStatus !== "over" && attacker.hp > 0) {
             const target = this.chooseTarget(attacker);
+            if (target === false) return 'exit';
             console.log('this.alivePlayers = ',this.alivePlayers);
-            console.log('this.targetNames.includes(target) = ',this.targetNames.includes(target));
-            console.log('target =',target);
-            console.log('attacker =',attacker.name);
-            attacker.dealDamage(this.alivePlayers[target]);
+            //console.log('target =',target);
+            //console.log('attacker =',attacker.name);
+            this.blow(target, attacker);
         }
         else {
             console.log('This turn is over!');
         }
-        console.log('this.leftToPlay.length ===> ',this.leftToPlay.length);
     }
 
     chooseTarget(attacker) {
         const target = prompt(`It's time for ${attacker.name} to play. Who is your target?`);
         while (!this.targetNames.includes(target)) {
+            if (target === null) {
+                return false;
+            }
             return this.chooseTarget(attacker);
         }
         return target;
     }
 
+    //Choose a player randomly who didn't play yet
     choosePlayer() {
         if (this.leftToPlay.length > 0) {
             const attacker = shuffle(this.leftToPlay).pop();
@@ -65,8 +67,24 @@ class Turn {
             }
         }
         else {
-            this.turnStatus = "over";
+            this.endTurn();
         }
+    }
+
+    //Choose damage types and hit
+    blow(target, attacker) {
+        let blowType;
+        while (true) {
+            blowType = prompt("Please choose an attack type:\n1: Normal\n2: Special\n");
+            if (blowType === '1' || blowType === '2') break;
+        }
+        if (blowType === '1') return attacker.dealDamage(this.alivePlayers[target]);
+        if (blowType === '2') return attacker.specialDamage(this.alivePlayers[target]);
+    };
+
+    endTurn() {
+        this.turnStatus = "over";
+        Object.values(this.alivePlayers).map(x => x.shield = 0);
     }
 }
 
