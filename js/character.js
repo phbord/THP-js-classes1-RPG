@@ -1,15 +1,16 @@
 class Character {
     constructor(name, hp, dmg, mana) {
         this.name = name;
-        this.hp = hp; //points de vie
-        this.dmg = dmg; //dégât sur la cible
-        this.mana = mana; //points d'attaques spéciales
-        this.status = 'playing'; //'winner' ou 'loser'
+        this.hp = hp;       //lifepoints
+        this.dmg = dmg;     //dammages on target
+        this.mana = mana;   //special attack points
+        this.status = 'playing'; //'playing', 'winner' or 'loser'
     }
 
     takeDamage(dmg) {
         if (this.status === 'playing') {
             this.hp -= dmg;
+            if (this.hp <= 0) this.status = 'loser';
             if (this.hp < 0) this.hp = 0;
         }
     }
@@ -17,7 +18,7 @@ class Character {
     dealDamage(victim) {
         if (victim.hp > 0) {
             victim.takeDamage(this.dmg);
-            console.log(`X is attacking ${this.name}. He deals him ${this.dmg} damages.\n${this.name} got ${this.hp} lifepoints left`);
+            console.log(`${this.name} is attacking ${victim.name}.\nHe deals him ${this.dmg} damages.\n${victim.name} got ${victim.hp} lifepoints left.`);
         }
     }
 }
