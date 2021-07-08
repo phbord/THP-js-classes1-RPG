@@ -5,6 +5,17 @@
     </head>
     <body>
         <div class="container-fluid my-5">
+            <!-- <form id="rpg-form">
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="firstname">
+                    <div class="invalid mt-1 d-none" id="missing-firstname">Veuillez fournir un prénom</div>
+                </div>
+                <div class="mb-3 mt-4">
+                    <button class="btn btn-primary" type="submit">Valider</button>
+                </div>
+            </form>
+            <button class="btn btn-primary btn-watchstat" type="submit">Watch stat</button> -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -14,7 +25,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Exemples de création de personnages</td>
+                        <td>Créer des personnages</td>
                         <td>
                             <code>
                                 <div>game.newAvatar('Grace', Fighter);</div>
@@ -26,13 +37,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Lancer la partie</td>
-                        <td>
-                            <code>game.gameCourse();</code>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Exemple de vérification des données d'un personnage</td>
+                        <td>Voir les données d'un personnage</td>
                         <td>
                             <code>game.users['Grace'];</code>
                         </td>
@@ -41,6 +46,30 @@
                         <td>Infos des utilisateur</td>
                         <td>
                             <code>game.watchStats();</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lancer un tour</td>
+                        <td>
+                            <code>let turn = game.newTurn();</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lancer les coups (d'un tour)</td>
+                        <td>
+                            <code>game.turn.play();</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <code>game.gameCourse();</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <code></code>
                         </td>
                     </tr>
                 </tbody>

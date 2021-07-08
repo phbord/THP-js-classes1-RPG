@@ -7,7 +7,7 @@ class Game {
         this.winner = { name: "", hp: 0, status: "playing" };
 
         //LAUNCH entire game
-        //this.gameCourse();
+        this.gameCourse();
     }
 
     newTurn() {
@@ -59,7 +59,7 @@ class Game {
 
     gameCourse() {
         //Avatars
-        //this.generateAvatars();
+        this.generateAvatars();
         //Turns
         while (this.winner.status !== 'winner') {
             this.turnNumber += 1;

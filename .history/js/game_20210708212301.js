@@ -7,7 +7,7 @@ class Game {
         this.winner = { name: "", hp: 0, status: "playing" };
 
         //LAUNCH entire game
-        //this.gameCourse();
+        this.gameCourse();
     }
 
     newTurn() {
