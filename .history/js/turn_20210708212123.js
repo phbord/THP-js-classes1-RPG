@@ -33,7 +33,7 @@ class Turn {
         if (this.turnStatus !== "over" && attacker.hp > 0) {
             const target = this.chooseTarget(attacker);
             if (target === false) return 'exit';
-            //console.log('this.alivePlayers = ',this.alivePlayers);
+            console.log('this.alivePlayers = ',this.alivePlayers);
             //console.log('target =',target);
             //console.log('attacker =',attacker.name);
             this.blow(target, attacker);
